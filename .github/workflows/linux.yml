@@ -1,0 +1,17 @@
+name: linux
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: setup tmux-test
+        run: ./lib/tmux-test/setup
+      - name: run tests
+        run: ./tests/run_tests_in_isolation
