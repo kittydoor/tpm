@@ -5,12 +5,16 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 HELPERS_DIR="$CURRENT_DIR/helpers"
 
+#shellcheck source=scripts/helpers/plugin_functions.sh
 source "$HELPERS_DIR/plugin_functions.sh"
+#shellcheck source=scripts/helpers/utility.sh
 source "$HELPERS_DIR/utility.sh"
 
 if [ "$1" == "--tmux-echo" ]; then # tmux-specific echo functions
+	#shellcheck source=scripts/helpers/tmux_echo_functions.sh
 	source "$HELPERS_DIR/tmux_echo_functions.sh"
 else # shell output functions
+	#shellcheck source=scripts/helpers/shell_echo_functions.sh
 	source "$HELPERS_DIR/shell_echo_functions.sh"
 fi
 
@@ -19,7 +23,8 @@ shift
 
 pull_changes() {
 	local plugin="$1"
-	local plugin_path="$(plugin_path_helper "$plugin")"
+	local plugin_path
+	plugin_path="$(plugin_path_helper "$plugin")"
 	cd "$plugin_path" &&
 		GIT_TERMINAL_PROMPT=0 git pull &&
 		GIT_TERMINAL_PROMPT=0 git submodule update --init --recursive
@@ -35,10 +40,12 @@ update() {
 update_all() {
 	echo_ok "Updating all plugins!"
 	echo_ok ""
-	local plugins="$(tpm_plugins_list_helper)"
+	local plugins
+	plugins="$(tpm_plugins_list_helper)"
 	for plugin in $plugins; do
 		IFS='#' read -ra plugin <<< "$plugin"
-		local plugin_name="$(plugin_name_helper "${plugin[0]}")"
+		local plugin_name
+	  plugin_name="$(plugin_name_helper "${plugin[0]}")"
 		# updating only installed plugins
 		if plugin_already_installed "$plugin_name"; then
 			update "$plugin_name" &
@@ -51,7 +58,8 @@ update_plugins() {
 	local plugins="$*"
 	for plugin in $plugins; do
 		IFS='#' read -ra plugin <<< "$plugin"
-		local plugin_name="$(plugin_name_helper "${plugin[0]}")"
+		local plugin_name
+	  plugin_name="$(plugin_name_helper "${plugin[0]}")"
 		if plugin_already_installed "$plugin_name"; then
 			update "$plugin_name" &
 		else

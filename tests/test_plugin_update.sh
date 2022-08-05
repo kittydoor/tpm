@@ -4,7 +4,9 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TPM_DIR="$PWD"
 PLUGINS_DIR="$HOME/.tmux/plugins"
 
+#shellcheck source=tests/helpers/helpers.sh
 source "$CURRENT_DIR/helpers/helpers.sh"
+#shellcheck source=tests/helpers/tpm.sh
 source "$CURRENT_DIR/helpers/tpm.sh"
 
 manually_install_the_plugin() {

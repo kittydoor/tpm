@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 check_dir_exists_helper() {
 	[ -d "$1" ]
 }

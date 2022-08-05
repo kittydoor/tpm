@@ -6,7 +6,9 @@ PLUGINS_DIR="$HOME/.tmux/plugins"
 
 CUSTOM_PLUGINS_DIR="$HOME/foo/plugins"
 
+#shellcheck source=tests/helpers/helpers.sh
 source "$CURRENT_DIR/helpers/helpers.sh"
+#shellcheck source=tests/helpers/tpm.sh
 source "$CURRENT_DIR/helpers/tpm.sh"
 
 check_binding_defined() {
@@ -27,7 +29,8 @@ create_test_plugin_helper() {
 
 check_tpm_path() {
 	local correct_tpm_path="$1"
-	local tpm_path="$(tmux start-server\; show-environment -g TMUX_PLUGIN_MANAGER_PATH | cut -f2 -d=)"
+	local tpm_path
+	tpm_path="$(tmux start-server\; show-environment -g TMUX_PLUGIN_MANAGER_PATH | cut -f2 -d=)"
 	[ "$correct_tpm_path" == "$tpm_path" ]
 }
 

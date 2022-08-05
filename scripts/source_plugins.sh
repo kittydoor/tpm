@@ -3,6 +3,7 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 HELPERS_DIR="$CURRENT_DIR/helpers"
 
+#shellcheck source=scripts/helpers/plugin_functions.sh
 source "$HELPERS_DIR/plugin_functions.sh"
 
 plugin_dir_exists() {
@@ -27,8 +28,8 @@ silently_source_all_tmux_files() {
 }
 
 source_plugins() {
-	local plugin plugin_path
-	local plugins="$(tpm_plugins_list_helper)"
+	local plugins plugin plugin_path
+	plugins="$(tpm_plugins_list_helper)"
 	for plugin in $plugins; do
 		IFS='#' read -ra plugin <<< "$plugin"
 		plugin_path="$(plugin_path_helper "${plugin[0]}")"

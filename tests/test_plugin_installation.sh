@@ -8,7 +8,9 @@ CUSTOM_PLUGINS_DIR="$HOME/foo/plugins"
 ADDITIONAL_CONFIG_FILE_1="$HOME/.tmux/additional_config_file_1"
 ADDITIONAL_CONFIG_FILE_2="$HOME/.tmux/additional_config_file_2"
 
+#shellcheck source=tests/helpers/helpers.sh
 source "$CURRENT_DIR/helpers/helpers.sh"
+#shellcheck source=tests/helpers/tpm.sh
 source "$CURRENT_DIR/helpers/tpm.sh"
 
 # TMUX KEY-BINDING TESTS

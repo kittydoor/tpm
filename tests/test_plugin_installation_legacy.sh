@@ -4,7 +4,9 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PLUGINS_DIR="$HOME/.tmux/plugins"
 TPM_DIR="$PWD"
 
+#shellcheck source=tests/helpers/helpers.sh
 source "$CURRENT_DIR/helpers/helpers.sh"
+#shellcheck source=tests/helpers/tpm.sh
 source "$CURRENT_DIR/helpers/tpm.sh"
 
 # TMUX KEY-BINDING TESTS
@@ -17,7 +19,7 @@ test_plugin_installation_via_tmux_key_binding() {
 	HERE
 
 	# opens tmux and test it with `expect`
-	$CURRENT_DIR/expect_successful_plugin_download ||
+	"$CURRENT_DIR/expect_successful_plugin_download" ||
 		fail_helper "[key-binding] plugin installation fails"
 
 	# check plugin dir exists after download
