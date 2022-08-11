@@ -11,6 +11,9 @@ jobs:
         with:
           submodules: true
 
+      - name: lint
+        run: make lint
+
       - name: Cache Vagrant boxes
         uses: actions/cache@v3
         with:
@@ -22,7 +25,5 @@ jobs:
       - name: vagrant version
         run: vagrant --version
 
-      - name: setup tmux-test
-        run: ./lib/tmux-test/setup
       - name: run tests
-        run: ./run_tests
+        run: make test

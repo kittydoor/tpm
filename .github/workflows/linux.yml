@@ -11,9 +11,11 @@ jobs:
         with:
           submodules: true
 
+      - name: lint
+        run: make lint
+
       - name: install dependency packages
         run: sudo apt-get install -y expect
-      - name: setup tmux-test
-        run: ./lib/tmux-test/setup
+
       - name: run tests
-        run: ./tests/run_tests_in_isolation
+        run: make test-local
