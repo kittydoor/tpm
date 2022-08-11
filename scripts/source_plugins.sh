@@ -3,7 +3,6 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 HELPERS_DIR="$CURRENT_DIR/helpers"
 
-#shellcheck source=scripts/helpers/plugin_functions.sh
 source "$HELPERS_DIR/plugin_functions.sh"
 
 plugin_dir_exists() {

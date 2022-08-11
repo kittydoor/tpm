@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#shellcheck disable=SC2034
 
 install_key_option="@tpm-install"
 default_install_key="I"

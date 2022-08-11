@@ -6,9 +6,7 @@ PLUGINS_DIR="$HOME/.tmux/plugins"
 
 CUSTOM_PLUGINS_DIR="$HOME/foo/plugins"
 
-#shellcheck source=tests/helpers/helpers.sh
 source "$CURRENT_DIR/helpers/helpers.sh"
-#shellcheck source=tests/helpers/tpm.sh
 source "$CURRENT_DIR/helpers/tpm.sh"
 
 check_binding_defined() {

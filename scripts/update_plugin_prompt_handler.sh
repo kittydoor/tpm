@@ -7,9 +7,7 @@ if [ $# -eq 0 ]; then
 	exit 0
 fi
 
-#shellcheck source=scripts/helpers/tmux_echo_functions.sh
 source "$HELPERS_DIR/tmux_echo_functions.sh"
-#shellcheck source=scripts/helpers/tmux_utils.sh
 source "$HELPERS_DIR/tmux_utils.sh"
 
 main() {

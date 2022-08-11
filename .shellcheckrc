@@ -1,0 +1,44 @@
+# Don't warn on local foo="$(bar)"
+disable=SC2155
+
+# Don't warn unused
+disable=SC2034
+
+# Don't warn missing source
+disable=SC1091
+
+# Don't warn variable substitution instead of sed
+disable=SC2001
+
+# Don't warn A && B || C
+disable=SC2015
+
+# Don't warn ls | grep
+disable=SC2010
+
+# Don't warn silent cd fail
+disable=SC2164
+
+# Don't warn extra $() around command
+disable=SC2091
+
+# Don't warn read without -r
+disable=SC2162
+
+# Don't warn referenced but not assigned
+disable=SC2154
+
+# Don't warn assigning an array to a string
+disable=SC2124
+
+# Suggest command -v in place of which
+#enable=deprecate-which
+
+# Suggest quoting all variables
+#enable=quote-safe-variables
+
+# Suggest [[ ]] instead of [ ]
+#enable=require-double-brackets
+
+# Suggest ${VAR} in place of $VAR
+#enable=require-variable-braces

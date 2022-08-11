@@ -3,16 +3,12 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 HELPERS_DIR="$CURRENT_DIR/helpers"
 
-#shellcheck source=scripts/helpers/plugin_functions.sh
 source "$HELPERS_DIR/plugin_functions.sh"
-#shellcheck source=scripts/helpers/utility.sh
 source "$HELPERS_DIR/utility.sh"
 
 if [ "$1" == "--tmux-echo" ]; then # tmux-specific echo functions
-	#shellcheck source=scripts/helpers/tmux_echo_functions.sh
 	source "$HELPERS_DIR/tmux_echo_functions.sh"
 else # shell output functions
-	#shellcheck source=scripts/helpers/shell_echo_functions.sh
 	source "$HELPERS_DIR/shell_echo_functions.sh"
 fi
 
